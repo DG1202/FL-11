@@ -1,0 +1,213 @@
+@mixin flexBeetwen {
+    display: flex;
+    justify-content: space-between;
+}
+
+@mixin container {
+    max-width: $containerWidth;
+    margin: $posCenter;
+}
+
+@mixin styleFooterCards {
+    background-color:  map-get($colors, "cardsAndFooterBcg");
+    color: map-get($colors, "colorWhite");
+}
+
+@mixin noMarginPadding {
+    margin: 0;
+    padding: 0;
+}
+
+@mixin backgroundLine {
+    content: '';
+    position: absolute;
+    background-color: map-get($colors, "textBcgrColor");     
+    z-index: -1;
+    display: block;
+}
+
+body {
+    @include noMarginPadding;
+    font-family: $font, sans-serif;
+    background-color: map-get($colors, "bodyBcgrColor"); 
+}
+
+.landing-logo {
+    padding: 25px 0 0 0;
+    display: flex;
+    img {
+        width: 48px;
+        height: 48px;
+    }
+    p {
+        margin: 0;
+        padding: 0 18px;
+        width: 70px;
+        font-size: 24px;
+        word-break: break-all;
+        text-align: center;
+        padding-bottom: 0;
+        line-height: 24px;
+        span {
+            font-size: 14px;
+            line-height: 15px;
+        }
+    }
+}
+
+.header_button{
+    padding: 14px 45px;
+    font-size: 18px;
+    color: map-get($colors, "colorWhite");
+    background-color: map-get($colors, "btnBcgr");
+    border: none;
+    cursor: pointer;
+    &:hover {
+        opacity: .8;
+    }
+}
+
+header {
+    background-image: $headerBackgrImg;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 777px;
+    border-radius: 0 0 550px/300px 0;
+    width: 100%;
+    color: map-get($colors, "headerTextColor");
+    .header-wrap {
+        @include container;
+        .header_heading {
+            position: relative;
+            font-size: 80px;
+            font-weight: bold;
+            max-width: 550px;
+            margin: 70px 0 30px 0;
+            line-height: 80px;
+            z-index: 1;
+            &::after {
+                @include backgroundLine;
+                width: 331px;
+                height: 27px;                
+                bottom: 5px;
+                right: 216px;
+               
+            }
+        }
+        .header_text {
+            font-size: 20px;
+            white-space: pre;
+            margin-left: -47px;
+            margin-top: 0;
+            line-height: 27px;
+        }
+    }
+}
+
+main {
+    position: relative;
+    text-align: center;
+    padding-bottom: 250px;
+    p.section_text {
+        position: relative;
+        font-size: 45px;
+        letter-spacing: 0.01em;
+        font-weight: bold;
+        margin: 30px auto;
+        color: map-get($colors, "headerTextColor");
+        width: fit-content;
+        &::after {
+            @include backgroundLine;
+            width: 210px;
+            height: 15px;            
+            bottom: 8px; 
+            right: 15px;
+        }
+    }
+    .section_card_wrap {
+        @include flexBeetwen;
+        @include container;
+        .section_card {
+            margin: 0 2px;
+            padding: 15px;
+            @include styleFooterCards;
+            border-radius: $borderRadius;
+            width: 30%;
+            img {
+                width: 100%;
+                border-radius: $borderRadius;
+            }
+            .section_card_heading {
+                font-size: 25px;
+                line-height: 25px;
+                font-weight: bold;
+                margin: $posCenter;
+                width: fit-content;
+                background-image: linear-gradient(transparent 50%, map-get($colors, "textBcgrColor") 50%);
+            }
+        }
+    }
+    .section_banner {
+        position: absolute;
+        bottom: -75px;
+        background-image: linear-gradient(to right, map-get($colors, "banerStartColor"), map-get($colors, "banerEndColor"));
+        max-width: 1000px;
+        width: 100%;
+        height: 150px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        border-radius: $borderRadius;
+        margin: $posCenter;
+        left: 0;
+        right: 0;
+        text-align: left;
+        .section_banner_text_wrap {
+            margin-top: 20px;
+            .section_banner_heading {
+                position: relative;
+                font-size: 30px;
+                margin: 0;
+                font-weight: bold;
+                color: map-get($colors, "headerTextColor");
+                z-index: 1;
+                &::after {
+                    @include backgroundLine;                     
+                    width: 64px;
+                    height: 10px;                
+                    bottom: 5px;
+                    right: 222px;                
+               }
+            }
+            .section_banner_text {
+                font-size: 20px;
+                color: map-get($colors, "colorWhite");
+            }            
+        }
+        .section_banner_button{
+                @extend .header_button;
+            }
+    }
+}
+
+.footer {
+    @include styleFooterCards;
+    height: 300px;
+    display: flex;
+    align-items: flex-end;
+    .footer-wrap {
+        @include flexBeetwen;
+        align-items: center;
+        max-width: $containerWidth;
+        width: 100%;
+        margin: 0 auto 70px auto;
+        .landing-logo {
+            margin-bottom: 30px;
+        }
+        .footer_text {
+            max-width: 350px;
+            line-height: 20px;
+        }
+    }
+}
