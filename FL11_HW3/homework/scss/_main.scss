@@ -90,7 +90,7 @@ header {
                 @include backgroundLine;
                 width: 331px;
                 height: 27px;                
-                bottom: 5px;
+                bottom: 15px;
                 right: 216px;
                
             }
@@ -121,7 +121,7 @@ main {
             @include backgroundLine;
             width: 210px;
             height: 15px;            
-            bottom: 8px; 
+            bottom: 22px;
             right: 15px;
         }
     }
@@ -175,9 +175,9 @@ main {
                 &::after {
                     @include backgroundLine;                     
                     width: 64px;
-                    height: 10px;                
-                    bottom: 5px;
-                    right: 222px;                
+                    height: 10px;
+                    bottom: 14px;
+                    right: 223px;
                }
             }
             .section_banner_text {
