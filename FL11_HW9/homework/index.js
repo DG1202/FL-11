@@ -33,9 +33,9 @@ const data = [
   }
 ];
 
-function getNumbers(string){
+function getNumbers(string) {
   let numbers = [];
-  for(let i = 0; i < string.length;i++){
+  for(let i = 0; i < string.length;i++) {
     if(!isNaN(parseInt(string[i]))){
       numbers.push(parseInt(string[i]))
     }
@@ -43,9 +43,9 @@ function getNumbers(string){
   return numbers
 }
 
-function findTypes(){
+function findTypes() {
   let dataTypes = {};
-  for(let i = 0; i < arguments.length;i++){
+  for(let i = 0; i < arguments.length;i++) {
     if(dataTypes[typeof arguments[i]]){
       dataTypes[typeof arguments[i]] += 1
     } else{ 
@@ -55,38 +55,38 @@ function findTypes(){
   return dataTypes
 }
 
-function executeforEach(array,fn){    
-  for(let i = 0; i < array.length;i++){
+function executeforEach(array, fn){
+  for(let i = 0; i < array.length;i++) {
     fn(array[i])
   }   
 }
 
-function mapArray(array,fn){       
+function mapArray(array, fn) {
   let newArr = [];
   executeforEach(array, (el) => newArr.push(fn(el)));
   return newArr
 }
 
-function filterArray(array,fn){       
+function filterArray(array, fn) {
   let newArr = [];
   executeforEach(array, (el) => {
     if(fn(el)){
-       newArr.push(el)
+       newArr.push(el);
       }
-  }
-   );
-  return newArr
+    }
+  );
+  return newArr;
 }
 
-function showFormattedDate(date){       
-  return `Date: ${date.toLocaleString('en', { month: 'short' })} ${date.getDate()} ${date.getFullYear()}` ;
+function showFormattedDate(date) {
+  return `Date: ${date.toLocaleString('en', { month: 'short' })} ${date.getDate()} ${date.getFullYear()}`;
 }
 
-function canConvertToDate(date){       
+function canConvertToDate(date) {
   return new Date(date).toString() !== 'Invalid Date';
 }
 
-function daysBetween(start,end) {
+function daysBetween(start, end) {
   const sec = 1000;
   const min = 60;
   const hour = 60;
@@ -100,7 +100,7 @@ function getAmountOfAdultPeople(data) {
   const yearDays = 365;
   let adultDays = adult * yearDays;
   return filterArray(data, function(el) {
-    let personAge = daysBetween(new Date(el[' birthday ']),new Date());        
+    let personAge = daysBetween(new Date(el[' birthday ']), new Date());
     return personAge > adultDays;
   }).length;  
 }
@@ -108,7 +108,7 @@ function getAmountOfAdultPeople(data) {
 function keys(obj) {
   let myKeys = [];
   for (let key in obj) {
-    if(obj.hasOwnProperty(key)){  
+    if(obj.hasOwnProperty(key)) {
       myKeys.push(key); 
   }
 }  
@@ -118,7 +118,7 @@ function keys(obj) {
 function values(obj) {
   let myValues = [];
   for (let key in obj) {
-    if(obj.hasOwnProperty(key)){  
+    if(obj.hasOwnProperty(key)) {
       myValues.push(obj[key]); 
     }
   }  
