@@ -122,7 +122,7 @@ function values(obj) {
       myValues.push(obj[key]); 
     }
   }  
-  return myKeys
+  return myValues
 }
 
 
