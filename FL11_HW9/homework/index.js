@@ -34,31 +34,31 @@ const data = [
 ];
 
 function getNumbers(string){
-    let numbers = [];
-    for(let i = 0; i < string.length;i++){
-        if(!isNaN(parseInt(string[i]))){
-            numbers.push(parseInt(string[i]))
-        }
+  let numbers = [];
+  for(let i = 0; i < string.length;i++){
+    if(!isNaN(parseInt(string[i]))){
+      numbers.push(parseInt(string[i]))
     }
-    return numbers
+  }
+  return numbers
 }
 
 function findTypes(){
-    let dataTypes = {};
-    for(let i = 0; i < arguments.length;i++){
-      if(dataTypes[typeof arguments[i]]){
-        dataTypes[typeof arguments[i]] += 1
-      } else{ 
-      dataTypes[typeof arguments[i]] = 1;
+  let dataTypes = {};
+  for(let i = 0; i < arguments.length;i++){
+    if(dataTypes[typeof arguments[i]]){
+      dataTypes[typeof arguments[i]] += 1
+    } else{ 
+    dataTypes[typeof arguments[i]] = 1;
     }
-    }
-    return dataTypes
+  }
+  return dataTypes
 }
 
 function executeforEach(array,fn){    
-    for(let i = 0; i < array.length;i++){
-      fn(array[i])
-    }   
+  for(let i = 0; i < array.length;i++){
+    fn(array[i])
+  }   
 }
 
 function mapArray(array,fn){       
@@ -107,19 +107,19 @@ function getAmountOfAdultPeople(data) {
 
 function keys(obj) {
   let myKeys = [];
-for (let key in obj) {
-  if(obj.hasOwnProperty(key)){  
-    myKeys.push(key); 
+  for (let key in obj) {
+    if(obj.hasOwnProperty(key)){  
+      myKeys.push(key); 
   }
 }  
   return myKeys
 }
 
 function values(obj) {
-  let myKeys = [];
+  let myValues = [];
   for (let key in obj) {
     if(obj.hasOwnProperty(key)){  
-      myKeys.push(obj[key]); 
+      myValues.push(obj[key]); 
     }
   }  
   return myKeys
