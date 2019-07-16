@@ -40,7 +40,7 @@ function getNumbers(string) {
       numbers.push(parseInt(string[i]))
     }
   }
-  return numbers
+  return numbers;
 }
 
 function findTypes() {
@@ -52,19 +52,19 @@ function findTypes() {
     dataTypes[typeof arguments[i]] = 1;
     }
   }
-  return dataTypes
+  return dataTypes;
 }
 
 function executeforEach(array, fn){
   for(let i = 0; i < array.length;i++) {
-    fn(array[i])
+    fn(array[i]);
   }   
 }
 
 function mapArray(array, fn) {
   let newArr = [];
   executeforEach(array, (el) => newArr.push(fn(el)));
-  return newArr
+  return newArr;
 }
 
 function filterArray(array, fn) {
@@ -122,7 +122,7 @@ function values(obj) {
       myValues.push(obj[key]); 
     }
   }  
-  return myValues
+  return myValues;
 }
 
 
