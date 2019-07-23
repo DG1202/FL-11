@@ -1,5 +1,4 @@
 let rootNode = document.getElementById('root');
-
 const input = document.querySelector('input.input');
 const addBtn = document.querySelector('.add-btn');
 const actionList = document.querySelector('.action-list');
@@ -117,9 +116,9 @@ actionList.addEventListener('dragover', event => {
 		const offset = bounding.y + bounding.height / two;
 		if(event.target >= offset) {
 			event.target.style.borderTop = '';
-			event.target.style.borderBottom = '0.5px solid blue';
+			event.target.style.borderBottom = '1px solid grey';
 		}else {
-			event.target.style.borderTop = '0.5px solid blue';
+			event.target.style.borderTop = '1px solid grey';
 			event.target.style.borderBottom = '';
 		}
 	}

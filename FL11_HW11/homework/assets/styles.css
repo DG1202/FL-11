@@ -72,37 +72,38 @@ hr {
 }
 
 ul {
-    list-style: none;
+  list-style: none;
 }
 
 .action-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: move;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: move;
+  border: 1px solid transparent;
 }
 .action p {
-    margin: 0 8px;
-    font-size: 14px;
+  padding: 7px;
+  font-size: 14px;
 }
 
 .action input {
-   padding: 5px;
-    margin-right: 5px;
+  padding: 5px;
+  margin-right: 5px;
 }
 
 i{
-    cursor: pointer;
-    color: skyblue;
+  cursor: pointer;
+  color: #7fc3f1;
 }
 
 button:focus{
-    outline: none;
+  outline: none;
 }
 
 .action {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 
