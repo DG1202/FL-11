@@ -6,17 +6,21 @@ let itemsIndex = null;
 const errMessageTimeOut = 2000;
 
 const addTodoItem = (name) => {
-  if(todoItems.every(v => v.name !== name)) {
+  if(!todoItems.every(v => v.name !== name)){
+    rootNode.appendChild(errMessage);
+    errText.innerHTML = 'You can\'t add already exist item !';
+    setTimeout(removeErrMessage, errMessageTimeOut)
+  }else if(name === ''){
+    rootNode.appendChild(errMessage);
+    errText.innerHTML = 'You can\'t add empty item !';
+    setTimeout(removeErrMessage, errMessageTimeOut)
+  }else{
     const item = {name: name, completed: false};
     todoItems.push(item);
     location.hash = '';
     addPageInput.value = '';
     listTodoItems();
-  }else{
-    rootNode.appendChild(errMessage);
-    errText.innerHTML = 'You can\'t add already exist item !';
-    setTimeout(removeErrMessage, errMessageTimeOut)
-}
+  }
 };
 
 const removeTodoItem = (index) => {
@@ -179,15 +183,20 @@ const modifySaveBtn = document.createElement('button');
 modifySaveBtn.innerHTML = 'Save changes';
 modifySaveBtn.onclick = () => {
   let todoItemsFiltred = todoItems.filter(v => v.name !== modifyPageInput.value);
-  if(todoItemsFiltred.length === todoItems.length || todoItems[itemsIndex].name === modifyPageInput.value) {
+  if(modifyPageInput.value !== '' &&
+    (todoItemsFiltred.length === todoItems.length || todoItems[itemsIndex].name === modifyPageInput.value)) {
       todoItems[itemsIndex].name = modifyPageInput.value;
       listTodoItems();
       itemsIndex = null;
       location.hash = '';
-  }else{
+  }else if(modifyPageInput.value === ''){
       rootNode.appendChild(errMessage);
-      errText.innerHTML = 'You can\'t add already exist item !';
+      errText.innerHTML = 'You can\'t add empty item !';
       setTimeout(removeErrMessage, errMessageTimeOut)
+  }else{
+    rootNode.appendChild(errMessage);
+    errText.innerHTML = 'You can\'t add already exist item !';
+    setTimeout(removeErrMessage, errMessageTimeOut)
   }
 };
 
@@ -202,6 +211,9 @@ modifyButtonsRow.appendChild(modifySaveBtn);
 const errMessage = document.createElement('div');
 errMessage.classList.add('err-message');
 
+if(!!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime)) {
+  errMessage.classList.add('chrome-err-message');
+}
 const errHeader = document.createElement('h4');
 errHeader.innerHTML = 'Danger!';
 
@@ -211,7 +223,9 @@ errMessage.appendChild(errHeader);
 errMessage.appendChild(errText);
 
 const removeErrMessage = () => {
+  if(rootNode.contains(errMessage)) {
     rootNode.removeChild(errMessage);
+  }
 };
 
 //Navigation

@@ -46,13 +46,17 @@ li{
 }
 .err-message{
   position: absolute;
-  left: 10px;
+  right: 10px;
   top: 10px;
   background-color: red;
   color: #fff;
   text-align: left;
   padding: 20px;
   box-sizing: border-box;
+}
+.chrome-err-message{
+  right: auto;
+  left: 10px;
 }
 .err-message h4{
   padding: 0;
