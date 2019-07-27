@@ -3,6 +3,7 @@ const rootNode = document.getElementById('root');
 let todoItems = [];
 let todoDoneItems = [];
 let itemsIndex = null;
+const errMessageTimeOut = 2000;
 
 const addTodoItem = (name) => {
   if(todoItems.every(v => v.name !== name)) {
@@ -10,11 +11,11 @@ const addTodoItem = (name) => {
     todoItems.push(item);
     location.hash = '';
     addPageInput.value = '';
-    removeErrMessage();
     listTodoItems();
   }else{
     rootNode.appendChild(errMessage);
     errText.innerHTML = 'You can\'t add already exist item !';
+    setTimeout(removeErrMessage, errMessageTimeOut)
 }
 };
 
@@ -93,10 +94,10 @@ const listTodoItems = () => {
         modifyPageInput.value = todoItems[item].name;
         location.hash = 'modify-page';
         itemsIndex = item;
-        removeErrMessage();
       }else{
           rootNode.appendChild(errMessage);
           errText.innerHTML = 'You can\'t edit already done item !';
+          setTimeout(removeErrMessage, errMessageTimeOut)
       }
     };
     const removeItem = document.createElement('img');
@@ -138,7 +139,6 @@ cancelBtn.innerHTML = 'Cancel';
 cancelBtn.onclick = () => {
   addPageInput.value = '';
   location.hash = '';
-  removeErrMessage();
 };
 
 const saveBtn = document.createElement('button');
@@ -173,7 +173,6 @@ modifyCancelBtn.innerHTML = 'Cancel';
 modifyCancelBtn.onclick = () => {
   modifyPageInput.value = '';
   location.hash = '';
-  removeErrMessage();
 };
 
 const modifySaveBtn = document.createElement('button');
@@ -185,10 +184,10 @@ modifySaveBtn.onclick = () => {
       listTodoItems();
       itemsIndex = null;
       location.hash = '';
-      removeErrMessage();
   }else{
       rootNode.appendChild(errMessage);
       errText.innerHTML = 'You can\'t add already exist item !';
+      setTimeout(removeErrMessage, errMessageTimeOut)
   }
 };
 
@@ -212,9 +211,7 @@ errMessage.appendChild(errHeader);
 errMessage.appendChild(errText);
 
 const removeErrMessage = () => {
-  if(rootNode.contains(errMessage)){
     rootNode.removeChild(errMessage);
-  }
 };
 
 //Navigation
