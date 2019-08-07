@@ -1,0 +1,97 @@
+@import "variables.less";
+@import "bootstrap.min.css";
+
+body{
+  padding-bottom: 25px;
+  position: relative;
+  min-height: 100vh;
+}
+
+.block__title {
+  color: @blue;
+  &-border{
+    color: @blue;
+    border-bottom: 2px solid @blue;
+    padding-bottom: 5px;
+    margin: 20px 0;
+  }
+}
+
+.main-img{
+  width: 100%;
+}
+
+.navbar-light .navbar-nav .nav-link.active{
+  color: @white;
+  background-color: @blue;
+}
+
+.navbar-toggler-icon {
+  width: 1em;
+  height: 1.1em;
+}
+
+.navbar-toggler {
+  padding: 0rem .25rem;
+}
+
+.description{
+  font-size: 15px;
+  line-height: 20px;
+}
+
+.card{
+  &-red{
+    .card-body {
+      border: 1px solid @red;
+    }
+    .card-title {
+      border: 1px solid @red;
+      background-color: @red;
+    }
+  }
+  &-blue{
+    .card-body {
+      border: 1px solid @blue;
+    }
+    .card-title {
+      border: 1px solid @blue;
+      background-color: @blue;
+    }
+  }
+  &-orange{
+    .card-body {
+      border: 1px solid @orange;
+    }
+    .card-title {
+      border: 1px solid @orange;
+      background-color: @orange;
+    }
+  }
+  &-green{
+    .card-body {
+      border: 1px solid @green;
+    }
+    .card-title {
+      border: 1px solid @green;
+      background-color: @green;
+    }
+  }
+  &-title{
+    text-align: center;
+    color: @white;
+    padding: 5px;
+  }
+}
+
+.footer{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  p {
+    background-color: @grey;
+    color: @white;
+    margin: 0;
+  }
+}
