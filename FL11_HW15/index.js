@@ -15,7 +15,7 @@ class Hamburger{
 		this.addCheese = () => {
 			if(_cheese < 1 && !_timesBite){
 				_cheese++;
-				this.setCalories(this.getCalories() + 120)
+				_calories += 120
 			}else if(_timesBite){
 				console.log('Sorry, you cannot add cheese')
 			}else{
@@ -25,7 +25,7 @@ class Hamburger{
 		this.addTomato = () => {
 			if(_tomato < 2 && !_timesBite){
 				_tomato++;
-				this.setCalories(this.getCalories() + 20)
+				_calories += 20
 			}else if(_timesBite){
 				console.log('Sorry, you cannot add tomato')
 			}else{
@@ -35,7 +35,7 @@ class Hamburger{
 		this.addSecretIngredient = () => {
 			if(!_tomato && !_cheese && _secretIngridient < 1 && !_timesBite){
 				_secretIngridient++;
-				this.setCalories(this.getCalories() + 100)
+				_calories += 100
 			}else if(_timesBite){
 				console.log('Sorry, you cannot add tomato');
 			}else if(!_tomato && !_cheese && !!_secretIngridient){
