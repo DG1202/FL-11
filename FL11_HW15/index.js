@@ -13,7 +13,7 @@ class Hamburger{
 				_calories = newCaloriesValue;
 		};
 		this.addCheese = () => {
-			if(_cheese < 1 && !_timesBite){
+			if(!_cheese && !_timesBite){
 				_cheese++;
 				_calories += 120
 			}else if(_timesBite){
@@ -33,7 +33,7 @@ class Hamburger{
 			}
 		};
 		this.addSecretIngredient = () => {
-			if(!_tomato && !_cheese && _secretIngridient < 1 && !_timesBite){
+			if(!_tomato && !_cheese && !_secretIngridient && !_timesBite){
 				_secretIngridient++;
 				_calories += 100
 			}else if(_timesBite){
