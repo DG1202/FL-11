@@ -5,29 +5,28 @@ function Pockemon() {
 	this.nextLevel = Charizard;
 }
 
-Pockemon.prototype.getType = function () {
-	return this.element;
-};
+Pockemon.prototype = {
+	getType: function () {
+		return this.element;
+	},
+	getSpecie: function () {
+		return this.specie;
+	},
+	canFly: function () {
+		return this.fly;
+	},
+	getPokemonType: function () {
+		return this.pokemonType.name;
 
-Pockemon.prototype.getSpecie = function () {
-	return this.specie;
-};
-
-Pockemon.prototype.canFly = function () {
-	return this.fly;
-};
-Pockemon.prototype.getPokemonType = function () {
-	return this.pokemonType.name;
-};
-
-Pockemon.prototype.evolve = function () {
-	if(this.nextLevel !== this.pokemonType){
-		const NewLevel = this.nextLevel;
-		return new NewLevel();
+	},
+	evolve: function () {
+		if (this.nextLevel !== this.pokemonType) {
+			const NewLevel = this.nextLevel;
+			return new NewLevel();
+		}
+		return this;
 	}
-	return this;
 };
-
 
 function Charmander() {
 	Pockemon.call(this);
@@ -45,13 +44,6 @@ function Charizard() {
 	this.fly = true;
 	this.pokemonType = Charizard;
 }
-Charmander.prototype = Object.create(Pockemon.prototype);
-Charmeleon.prototype = Object.create(Pockemon.prototype);
-Charizard.prototype = Object.create(Pockemon.prototype);
-Charmander.prototype.constructor = Charmander;
-Charmeleon.prototype.constructor = Charmeleon;
-Charizard.prototype.constructor = Charizard;
-
 function Raichu() {
 	Pockemon.call(this);
 	this.specie = 'Mouse Pokémon';
@@ -68,12 +60,11 @@ function Pikachu() {
 	this.pokemonType = Pikachu;
 }
 
-Pichu.prototype = Object.create(Pockemon.prototype);
-Pikachu.prototype = Object.create(Pockemon.prototype);
-Raichu.prototype = Object.create(Pockemon.prototype);
-Pichu.prototype.constructor = Pichu;
-Pikachu.prototype.constructor = Pikachu;
-Raichu.prototype.constructor = Raichu;
+const pockemons = [Charmander, Charmeleon, Charizard, Pichu, Pikachu, Raichu];
+pockemons.forEach(pockemon => {
+	pockemon.prototype = Object.create(Pockemon.prototype);
+	pockemon.prototype.constructor = pockemon;
+});
 
 const charmander = new Charmander();
 const charmeleon = new Charmeleon();
