@@ -1,7 +1,3 @@
-
-
-
-
 const rootNode = document.getElementById('root');
 
 let todoItems = [];
