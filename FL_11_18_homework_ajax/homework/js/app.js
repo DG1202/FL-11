@@ -1,3 +1,5 @@
+const container = document.getElementById('container');
+
 const preloader = document.createElement('div');
 preloader.classList.add('loader-wrapper');
 const spinner = document.createElement('div');
@@ -43,30 +45,17 @@ editBtns.appendChild(cancelUserChangesBtn);
 editUser.appendChild(editUserInput);
 editUser.appendChild(editBtns);
 
-
-
-
-
-
-const container = document.getElementById('container');
-
-
-
-
 const usersUrl = 'https://jsonplaceholder.typicode.com/users';
 const postsUrl = 'https://jsonplaceholder.typicode.com/posts?userId=';
 const userDataUrl = 'https://jsonplaceholder.typicode.com/user/';
 const commentsUrl = 'https://jsonplaceholder.typicode.com/comments';
+const catUrl = 'http://aws.random.cat/meow';
 let currItem;
+let currListItem;
 let users = {};
 let posts = null;
 let comments = null;
-let currListItem;
-
-// randomCAt
-// fetch('http://aws.random.cat/meow')
-// .then(response=>response.json())
-// .then(data=>console.log(data))
+let randomCats = [];
 
 fetchUsers(usersUrl);
 
@@ -76,6 +65,13 @@ function createUsersList(users) {
 		const listItem = document.createElement('li');
 		listItem.classList.add('users-list-item');
 
+		const userInfo = document.createElement('div');
+		userInfo.classList.add('user-info');
+
+		const avatar = document.createElement('img');
+		avatar.classList.add('avatar');
+		avatar.src = randomCats[index].file;
+
 		const userName = document.createElement('span');
 		userName.innerHTML = user.name;
 		userName.onclick = toUserPosts.bind(null, user);
@@ -83,20 +79,19 @@ function createUsersList(users) {
 		const btns = document.createElement('div');
 		btns.classList.add('buttons-wrapper');
 
-
 		const removeBtn = document.createElement('div');
 		removeBtn.classList.add('btn');
 		removeBtn.classList.add('btn-remove');
 		removeBtn.onclick = removeItem.bind(null, index);
-
 
 		const editBtn = document.createElement('div');
 		editBtn.classList.add('btn');
 		editBtn.classList.add('btn-edit');
 		editBtn.onclick = editUserName.bind(null,user,index);
 
-
-		listItem.appendChild(userName);
+		listItem.appendChild(userInfo);
+		userInfo.appendChild(avatar);
+		userInfo.appendChild(userName);
 		listItem.appendChild(btns);
 		btns.appendChild(editBtn);
 		btns.appendChild(removeBtn);
@@ -104,12 +99,16 @@ function createUsersList(users) {
 	});
 	container.appendChild(usersBlock);
 }
+const catsUrl = Array(10).fill(catUrl);
 
 async function fetchUsers(url) {
 	container.appendChild(preloader);
 	try {
 		const response = await fetch(url);
 		users = await response.json();
+		const promises = catsUrl.map(url => fetch(url).then(response => response.json()));
+		const results = await Promise.all(promises);
+		randomCats = results;
 		createUsersList(users);
 	}catch(err) {
 		console.log(err);
@@ -131,16 +130,13 @@ const removeItem = (index) => {
 	.then(() => {
 		users.splice(index,1);
 		createUsersList(users);
-	}).catch(err => console.error(err))
+	}).catch(err => console.log(err))
 	.then(() => {
 		container.removeChild(preloader);
 	})
 };
 
 const editUserName = (user, index) => {
-	//container.appendChild(editUserWindow);
-	// container.removeChild(usersBlock);
-	console.log(index);
 	currListItem = document.getElementsByClassName('users-list-item')[index];
 	currListItem.appendChild(editUser);
 	editUserInput.value = user.name;
@@ -208,7 +204,6 @@ function fetchUserPosts(userId){
 		.then(results => {
 			posts = results[0];
 			comments = results[1];
-			console.log(posts);
 			createPostsList(posts, comments);
 		})
 		.catch(err => console.error(err))
