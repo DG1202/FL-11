@@ -49,7 +49,7 @@ const usersUrl = 'https://jsonplaceholder.typicode.com/users';
 const postsUrl = 'https://jsonplaceholder.typicode.com/posts?userId=';
 const userDataUrl = 'https://jsonplaceholder.typicode.com/user/';
 const commentsUrl = 'https://jsonplaceholder.typicode.com/comments';
-const catUrl = 'http://aws.random.cat/meow';
+const catUrl = 'https://aws.random.cat/meow';
 let currItem;
 let currListItem;
 let users = {};
