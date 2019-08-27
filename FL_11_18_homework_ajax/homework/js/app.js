@@ -25,11 +25,33 @@ postsBlock.appendChild(postsTitle);
 postsBlock.appendChild(postsList);
 postsBlock.appendChild(backToUsersBtn);
 
+const editUser = document.createElement('div');
+editUser.classList.add('edit-user');
+const editUserInput = document.createElement('input');
+editUserInput.classList.add('edit-user-input');
+const cancelUserChangesBtn = document.createElement('div');
+cancelUserChangesBtn.classList.add('btn');
+const editBtns = document.createElement('div');
+editBtns.classList.add('edit-btns');
+
+cancelUserChangesBtn.classList.add('btn-cencel');
+const saveUserChangesBtn = document.createElement('div');
+saveUserChangesBtn.classList.add('btn');
+saveUserChangesBtn.classList.add('btn-save');
+editBtns.appendChild(saveUserChangesBtn);
+editBtns.appendChild(cancelUserChangesBtn);
+editUser.appendChild(editUserInput);
+editUser.appendChild(editBtns);
+
+
+
+
+
+
 const container = document.getElementById('container');
-const editUserWindow = document.getElementById('edit-user');
-const editUserInput = document.getElementById('changeName');
-const saveUserChangesBtn = document.getElementById('save-btn');
-const cancelUserChangesBtn = document.getElementById('cencel-btn');
+
+
+
 
 const usersUrl = 'https://jsonplaceholder.typicode.com/users';
 const postsUrl = 'https://jsonplaceholder.typicode.com/posts?userId=';
@@ -39,8 +61,8 @@ let currItem;
 let users = {};
 let posts = null;
 let comments = null;
+let currListItem;
 
-container.removeChild(editUserWindow);
 // randomCAt
 // fetch('http://aws.random.cat/meow')
 // .then(response=>response.json())
@@ -72,6 +94,7 @@ function createUsersList(users) {
 		editBtn.classList.add('btn');
 		editBtn.classList.add('btn-edit');
 		editBtn.onclick = editUserName.bind(null,user,index);
+
 
 		listItem.appendChild(userName);
 		listItem.appendChild(btns);
@@ -115,8 +138,11 @@ const removeItem = (index) => {
 };
 
 const editUserName = (user, index) => {
-	container.appendChild(editUserWindow);
-	container.removeChild(usersBlock);
+	//container.appendChild(editUserWindow);
+	// container.removeChild(usersBlock);
+	console.log(index);
+	currListItem = document.getElementsByClassName('users-list-item')[index];
+	currListItem.appendChild(editUser);
 	editUserInput.value = user.name;
 	currItem = index;
 };
@@ -199,8 +225,6 @@ const changeUserData = () => {
 	users[currItem].name = editUserInput.value;
 	createUsersList(users);
 	container.appendChild(preloader);
-	container.appendChild(usersBlock);
-	container.removeChild(editUserWindow);
 	fetch(userDataUrl + users[currItem].id, {
 		method: 'PUT',
 		body: JSON.stringify(users[currItem]),
@@ -212,12 +236,12 @@ const changeUserData = () => {
 		.then(response => console.log(response))
 		.catch(err => console.error(err))
 		.then(() => {
-				container.removeChild(preloader);
+			currListItem.removeChild(editUser);
+			container.removeChild(preloader);
 		})
 };
 const cencelEditing = () => {
-	container.appendChild(usersBlock);
-	container.removeChild(editUserWindow);
+	currListItem.removeChild(editUser);
 };
 
 const backToUsers = () => {
