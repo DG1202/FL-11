@@ -1,15 +1,36 @@
-const preloader = document.getElementById('loader-wrapper');
-const usersList = document.getElementById('users-list');
-const usersBlock = document.getElementById('users');
-const postsBlock = document.getElementById('posts');
+const preloader = document.createElement('div');
+preloader.classList.add('loader-wrapper');
+const spinner = document.createElement('div');
+spinner.classList.add('loader');
+preloader.appendChild(spinner);
+
+const usersBlock = document.createElement('div');
+usersBlock.classList.add('users');
+const usersTitle = document.createElement('h2');
+usersTitle.innerHTML = 'Favorite blogers';
+const usersList = document.createElement('ul');
+usersList.classList.add('users-list');
+usersBlock.appendChild(usersTitle);
+usersBlock.appendChild(usersList);
+
+const postsBlock = document.createElement('div');
+postsBlock.classList.add('posts');
+const postsTitle = document.createElement('h2');
+const postsList = document.createElement('ul');
+postsList.classList.add('posts-list');
+const backToUsersBtn = document.createElement('button');
+backToUsersBtn.classList.add('back-to-users');
+backToUsersBtn.innerHTML = 'Back to users';
+postsBlock.appendChild(postsTitle);
+postsBlock.appendChild(postsList);
+postsBlock.appendChild(backToUsersBtn);
+
 const container = document.getElementById('container');
-const postsList = document.getElementById('posts-list');
 const editUserWindow = document.getElementById('edit-user');
 const editUserInput = document.getElementById('changeName');
 const saveUserChangesBtn = document.getElementById('save-btn');
 const cancelUserChangesBtn = document.getElementById('cencel-btn');
-const backToUsersBtn = document.getElementById('back-to-users');
-const postsTitle = document.getElementById('posts-title');
+
 const usersUrl = 'https://jsonplaceholder.typicode.com/users';
 const postsUrl = 'https://jsonplaceholder.typicode.com/posts?userId=';
 const userDataUrl = 'https://jsonplaceholder.typicode.com/user/';
@@ -18,9 +39,12 @@ let currItem;
 let users = {};
 let posts = null;
 let comments = null;
-container.removeChild(postsBlock);
+
 container.removeChild(editUserWindow);
-container.removeChild(preloader);
+// randomCAt
+// fetch('http://aws.random.cat/meow')
+// .then(response=>response.json())
+// .then(data=>console.log(data))
 
 fetchUsers(usersUrl);
 
@@ -32,10 +56,7 @@ function createUsersList(users) {
 
 		const userName = document.createElement('span');
 		userName.innerHTML = user.name;
-		userName.onclick = () => {
-			postsTitle.innerHTML = `${user.name} posts`;
-			fetchUserPosts(user.id)
-		};
+		userName.onclick = toUserPosts.bind(null, user);
 
 		const btns = document.createElement('div');
 		btns.classList.add('buttons-wrapper');
@@ -44,38 +65,21 @@ function createUsersList(users) {
 		const removeBtn = document.createElement('div');
 		removeBtn.classList.add('btn');
 		removeBtn.classList.add('btn-remove');
-		removeBtn.onclick = () => {
-			container.appendChild(preloader);
-			createUsersList(users);
-			fetch(userDataUrl + user.id, {
-				method: 'DELETE'
-			})
-				.then(() => {
-					users.splice(index,1);
-					createUsersList(users);
-				}).catch(err => console.error(err))
-				.then(() => {
-					container.removeChild(preloader);
-				})
-		};
+		removeBtn.onclick = removeItem.bind(null, index);
+
 
 		const editBtn = document.createElement('div');
 		editBtn.classList.add('btn');
 		editBtn.classList.add('btn-edit');
-		editBtn.onclick = () => {
-			container.appendChild(editUserWindow);
-			container.removeChild(usersBlock);
-			editUserInput.value = user.name;
-			currItem = index;
-		};
+		editBtn.onclick = editUserName.bind(null,user,index);
 
 		listItem.appendChild(userName);
 		listItem.appendChild(btns);
 		btns.appendChild(editBtn);
 		btns.appendChild(removeBtn);
-
 		usersList.appendChild(listItem);
-	})
+	});
+	container.appendChild(usersBlock);
 }
 
 async function fetchUsers(url) {
@@ -90,10 +94,36 @@ async function fetchUsers(url) {
 	container.removeChild(preloader);
 }
 
+const toUserPosts = (user) => {
+	postsTitle.innerHTML = `${user.name} posts`;
+	fetchUserPosts(user.id)
+};
+
+const removeItem = (index) => {
+	container.appendChild(preloader);
+	createUsersList(users);
+	fetch(userDataUrl + users[index].id, {
+		method: 'DELETE'
+	})
+	.then(() => {
+		users.splice(index,1);
+		createUsersList(users);
+	}).catch(err => console.error(err))
+	.then(() => {
+		container.removeChild(preloader);
+	})
+};
+
+const editUserName = (user, index) => {
+	container.appendChild(editUserWindow);
+	container.removeChild(usersBlock);
+	editUserInput.value = user.name;
+	currItem = index;
+};
+
 function createPostsList(posts, comments) {
 	postsList.innerHTML = '';
 	container.removeChild(usersBlock);
-	container.appendChild(postsBlock);
 	posts.forEach(post => {
 		const listItem = document.createElement('li');
 		listItem.classList.add('posts-list-item');
@@ -135,7 +165,8 @@ function createPostsList(posts, comments) {
 		listItem.appendChild(commentsElement);
 		listItem.appendChild(commentList);
 		postsList.appendChild(listItem);
-	})
+	});
+	container.appendChild(postsBlock);
 }
 
 function fetchUserPosts(userId){
@@ -146,9 +177,7 @@ function fetchUserPosts(userId){
 	}
 	container.appendChild(preloader);
 	let urls = [postsUrl+userId, commentsUrl];
-	const promises = urls.map(url => fetch(url)
-		.then(y => y.json()));
-
+	const promises = urls.map(url => fetch(url).then(response => response.json()));
 	Promise.all(promises)
 		.then(results => {
 			posts = results[0];

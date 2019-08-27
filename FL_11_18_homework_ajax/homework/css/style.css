@@ -13,7 +13,7 @@ img{
     width: 100px;
     height: auto;
 }
-#loader-wrapper {
+.loader-wrapper {
     position: absolute;
     left: 0;
     top: 0;
@@ -50,7 +50,7 @@ h2{
     min-width: 300px;
     max-width: 800px;
 }
-#users-list{
+.users-list{
     list-style: none;   
 }
 .users-list-item{
@@ -65,7 +65,7 @@ h2{
     display: flex;
 }
 
-#posts-list{
+.posts-list{
     list-style: none;
     margin-bottom: 40px;
 }
@@ -131,7 +131,7 @@ h2{
 .btn-edit {
     background-image: url(../icons/change.png);
 }
-#back-to-users {
+.back-to-users {
     position: fixed;
     top: 30px;
     left: 30px;
