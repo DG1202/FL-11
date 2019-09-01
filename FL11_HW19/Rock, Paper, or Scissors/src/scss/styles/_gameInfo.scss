@@ -1,0 +1,17 @@
+@import './_variables.scss';
+
+.game-info{
+  text-align: center;
+  &__title{
+    font-size: 40px;
+  }
+  &__subtitle{
+    padding: 20px;
+  }
+  &__listitem{
+    padding: 5px;
+    &:last-child{
+      font-size: 25px;
+    }
+  }
+}
