@@ -1,1 +1,1 @@
-export {Basket} from './Basket.component'
+export { Basket } from "./Basket.component";

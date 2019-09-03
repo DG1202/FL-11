@@ -15,7 +15,7 @@ export class MainPage extends React.Component {
     }
   }
 
-  purchase = () =>{
+  purchase = () => {
     alert('Purchase has been completed!');
     this.setState({basket:[]});
 
