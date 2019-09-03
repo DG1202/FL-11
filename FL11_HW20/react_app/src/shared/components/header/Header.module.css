@@ -1,0 +1,12 @@
+.text {
+  color: pink;
+}
+
+.goods {
+  width: 100%;
+  background-color: lavender;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/*# sourceMappingURL=Header.module.css.map */

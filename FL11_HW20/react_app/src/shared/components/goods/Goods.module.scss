@@ -1,0 +1,31 @@
+.goods {
+  width: 150px;
+  margin: 20px;
+  text-align: center;
+  padding: 20px;
+}
+.emoji{
+ position: relative;
+ width: 100px;
+ margin: 0 auto;
+ height: 80px;
+  .bigEmoji{
+    position: absolute;
+    font-size: 50px;
+    left: 0;
+    right: 0;
+  }
+  .middleEmoji{
+    position: absolute;
+    font-size: 35px;
+    right: 5px;
+    bottom: 5px;
+  }
+  .smallEmoji{
+    position: absolute;
+    font-size: 25px;
+    right: 0;
+    left: 0;
+    bottom: 5px;
+  }
+}

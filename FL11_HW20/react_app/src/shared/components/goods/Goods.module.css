@@ -1,0 +1,42 @@
+.text {
+  color: pink;
+}
+
+.goods {
+  width: 150px;
+  background-color: lavender;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.emoji {
+  position: relative;
+  width: 100px;
+  margin: 0 auto;
+  height: 80px;
+}
+.emoji .bigEmoji {
+  position: absolute;
+  font-size: 50px;
+  left: 0;
+  right: 0;
+}
+.emoji .middleEmoji {
+  position: absolute;
+  font-size: 35px;
+  right: 5px;
+  bottom: 5px;
+}
+.emoji .smallEmoji {
+  position: absolute;
+  font-size: 25px;
+  right: 0;
+  left: 0;
+  bottom: 5px;
+}
+
+/*# sourceMappingURL=Goods.module.css.map */

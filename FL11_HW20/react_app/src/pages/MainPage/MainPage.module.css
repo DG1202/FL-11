@@ -1,0 +1,19 @@
+.page {
+  width: 960px;
+  margin: 0 auto;
+  background-color: beige;
+  display: flex;
+  justify-content: space-between;
+}
+.page .pageContent {
+  width: 75%;
+  background-color: antiquewhite;
+  box-sizing: border-box;
+}
+.page .pageContent .goodsList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/*# sourceMappingURL=MainPage.module.css.map */

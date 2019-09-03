@@ -1,0 +1,11 @@
+button {
+  padding: 5px 20px;
+  border: none;
+  background-color: blue;
+  color: white;
+  border-radius: 4px;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=Button.module.css.map */
