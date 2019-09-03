@@ -44,10 +44,11 @@ export class MainPage extends React.Component {
   };
 
   addToBasket = (index) => {
-    this.setState((prevState) => ({
+    this.setState(() => ({
       basket: [...this.state.basket, this.state.emoji[index]]
     }))
   };
+
   componentDidMount() {
     fetch(`${API}/emoji-shop`)
     .then(res => res.json())
@@ -68,11 +69,7 @@ export class MainPage extends React.Component {
             rate = {this.state.emoji[5].stars}
             price = {this.state.emoji[5].price}
             disabled={this.state.basket.some(basketItem => basketItem.id ===this.state.emoji[5].id)}
-            addToBasket={() => {
-              this.setState({
-                basket: [...this.state.basket, this.state.emoji[5]]
-              })
-            }}
+            addToBasket = {this.addToBasket.bind(null,5)}
           />
           <div className={classes.goodsList}>
             {this.renderEmoji()}
@@ -82,7 +79,7 @@ export class MainPage extends React.Component {
             basketItems={this.state.basket}
             purchase = {this.purchase}
             deleteItem = {this.deleteItem}
-            noItem = {this.state.basket.length}
+            noItem = {!!this.state.basket.length}
           />
       </div>
     )

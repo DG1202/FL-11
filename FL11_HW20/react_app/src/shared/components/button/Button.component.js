@@ -16,7 +16,6 @@ export function Button(props) {
 }
 
 Button.propTypes = {
-  disabled: PropTypes.bool.isRequired,
   clickAction: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired
 };
