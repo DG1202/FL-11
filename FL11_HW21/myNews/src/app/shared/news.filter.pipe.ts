@@ -10,7 +10,8 @@ export class NewsFilterPipe implements PipeTransform {
       return news;
     }
     return news.filter(newsItem => {
-      return newsItem.title.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+      return (newsItem.title.toLowerCase().indexOf(search.toLowerCase()) !== -1
+        || newsItem.text.toLowerCase().indexOf(search.toLowerCase()) !== -1);
     });
   }
 }
