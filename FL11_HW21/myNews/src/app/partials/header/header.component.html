@@ -1,0 +1,40 @@
+<header class="header">
+    <div class="header__title">
+        <h1>{{ selected }}</h1>
+    </div>
+    <div class="header__nav" *ngIf="isMainPage">
+      <mat-form-field>
+        <mat-label>News type</mat-label>
+        <mat-select [(ngModel)]='selected'  (ngModelChange)="onChange(selected)">
+          <mat-option [value]="allNews">{{allNews}}</mat-option>
+          <mat-option *ngFor="let news of newsType" [value]="news" >{{news}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+        <div class="header__filter">
+          <form
+            [formGroup]="form"
+            (ngSubmit)="filter()"
+            class="user-wish__form"
+          >
+             <input
+                  id='title'
+                  class="header__input"
+                  type="text"
+                  formControlName="filterValue"
+             >
+             <button
+               class="user-wish__submitBtn"
+               mat-raised-button color="primary"
+               type="submit"
+             >Filter</button>
+          </form>
+        </div>
+      <button
+        class="user-wish__succesBtn"
+        mat-raised-button
+        color="primary"
+        routerLink="/add-article"
+        disabled="{{selected === allNews}}"
+      >Add Article</button>
+    </div>
+</header>

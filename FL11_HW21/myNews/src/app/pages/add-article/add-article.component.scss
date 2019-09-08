@@ -1,0 +1,63 @@
+.add-news {
+  &__header{
+    height: 80px;
+    margin-bottom: 50px;
+    background-color: grey;
+    color: white;
+    font-size: 30px;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__formWrapper {
+    margin: 0 auto;
+    max-width: 760px;
+    box-shadow: 0 0 5px grey;
+    border-radius: 5px;
+    padding: 40px;
+  }
+  &__form {
+    display: flex;
+
+  }
+  &__formItem {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+  }
+  &__inputWrapper {
+    flex: 2 2 40%;
+    justify-content: flex-start;
+    text-align: left;
+    overflow: hidden;
+  }
+  &__input {
+    font-size: 20px;
+    border-radius: 5px;
+    padding: 10px;
+    border: 2px solid grey;
+    width: 80%;
+    resize: vertical;
+    &:focus {
+      outline: none;
+    }
+  }
+  &__itemTitle {
+    flex: 1 1 35%;
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+  }
+  &__submit {
+    display: flex;
+    justify-content: flex-end;
+  }
+  &__succes {
+    text-align: center;
+  }
+  &__btn {
+    margin: 10px 20px;
+  }
+}

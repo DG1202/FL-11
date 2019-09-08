@@ -1,0 +1,24 @@
+<app-header [isMainPage] = false ></app-header>
+<div class="container">
+  <article class="article">
+    <div class="article__pictureWrap">
+      <img
+        class="article__picture"
+        src='{{ newsList[index].sourceUrl }}' alt="">
+    </div>
+    <div class="article__content">
+      <h1 class="article__title">{{ newsList[index].title }}</h1>
+      <p class="article__text">{{ newsList[index].text }}</p>
+      <p>Date: {{ newsList[index].date }}</p>
+    </div>
+  </article>
+  <div class="article__btnWrapper">
+    <button
+      class="article__btn"
+      mat-raised-button
+      color="primary"
+      routerLink="/"
+    >      To main page
+    </button>
+  </div>
+</div>

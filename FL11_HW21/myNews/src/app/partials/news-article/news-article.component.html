@@ -1,0 +1,20 @@
+<article class="news">
+    <div class="news__pictureWrap">
+        <img
+          class="news__picture"
+          src='{{ newsItem.sourceUrl }}' alt="">
+    </div>
+    <div class="news__content">
+        <h1 class="news__title">{{ newsItem.title }}</h1>
+        <p class="news__text">{{ newsItem.description }}</p>
+        <button
+          class="news__showMoreBtn"
+          routerLink="/article/{{ index }}"
+        >
+          Show more
+        </button>
+    </div>
+    <div class="news__date">
+        <p>{{ newsItem.date }}</p>
+    </div>
+</article>

@@ -1,0 +1,30 @@
+.news{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid grey;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 20px;
+    width: 960px;
+    &__pictureWrap{
+        display: flex;
+    }
+    &__picture{
+        width: 200px;
+    }
+    &__content{
+        display: flex;
+        flex-direction: column;
+        padding: 0 20px;
+        height: 100%;
+        width: 60%;
+        justify-content: space-between;
+    }
+    &__date{
+        display: flex;
+    }
+    &__showMoreBtn{
+        max-width: 100px;
+    }
+}
