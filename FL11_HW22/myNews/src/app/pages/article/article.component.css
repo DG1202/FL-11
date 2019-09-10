@@ -1,0 +1,31 @@
+.article {
+  display: flex;
+  align-items: flex-start;
+  border: 2px solid grey;
+  border-radius: 10px;
+  padding: 20px;
+  width: 960px;
+  margin: 50px auto 0 auto;
+}
+.article__pictureWrap {
+  height: 100%;
+}
+.article__picture {
+  width: 300px;
+  height: auto;
+}
+.article__content {
+  padding: 0 20px 20px 40px;
+}
+.article__title {
+  padding: 0 0 20px 0;
+}
+.article__text {
+  padding: 20px 0;
+}
+.article__btnWrapper {
+  text-align: center;
+  padding: 30px;
+}
+
+/*# sourceMappingURL=article.component.css.map */

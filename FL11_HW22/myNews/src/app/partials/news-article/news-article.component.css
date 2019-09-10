@@ -1,0 +1,32 @@
+.news {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid grey;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 20px;
+  width: 960px;
+}
+.news__pictureWrap {
+  display: flex;
+}
+.news__picture {
+  width: 200px;
+}
+.news__content {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+  height: 100%;
+  width: 60%;
+  justify-content: space-between;
+}
+.news__date {
+  display: flex;
+}
+.news__showMoreBtn {
+  max-width: 100px;
+}
+
+/*# sourceMappingURL=news-article.component.css.map */

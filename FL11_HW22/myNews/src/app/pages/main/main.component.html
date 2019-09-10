@@ -1,0 +1,13 @@
+  <div *ngIf="!!data.data">
+    <app-header></app-header>
+    <div class="container">
+        <app-news-article
+            *ngFor="let item of data.getCurrentNewsType() | newsFilter: data.filserString; index as i "
+            [newsItem] = item
+            [index] = i
+        >
+        </app-news-article>
+    </div>
+  </div>
+
+

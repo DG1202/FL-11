@@ -1,0 +1,29 @@
+.article{
+  display: flex;
+  align-items: flex-start;
+  border: 2px solid grey;
+  border-radius: 10px;
+  padding: 20px;
+  width: 960px;
+  margin: 50px auto 0 auto;
+  &__pictureWrap{
+    height: 100%;
+  }
+  &__picture {
+    width: 300px;
+    height: auto;
+  }
+  &__content{
+    padding: 0 20px 20px 40px;
+  }
+  &__title{
+    padding: 0 0 20px 0;
+  }
+  &__text{
+    padding: 20px 0;
+  }
+  &__btnWrapper{
+    text-align: center;
+    padding: 30px;
+  }
+}
