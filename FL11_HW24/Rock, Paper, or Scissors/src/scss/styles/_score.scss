@@ -1,0 +1,21 @@
+@import './_variables.scss';
+
+.score{
+  display: flex;
+  justify-content: space-around;
+  margin: 50px;
+  text-align: center;
+  width: 100%;
+  &__player{
+    background-color: $dark-blue;
+    color: $white;
+    width: 100px;
+    padding-bottom: 10px;
+    span{
+      font-size: 30px;
+    }
+  }
+  &__title{
+    padding: 10px;
+  }
+}

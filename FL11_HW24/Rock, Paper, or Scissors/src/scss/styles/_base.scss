@@ -1,0 +1,57 @@
+@import './_variables.scss';
+
+body,h1,h2,h3,ul,li,div,span,p{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background-color: lavenderblush;
+}
+#container {
+  display: flex;
+  justify-content: center;
+}
+
+.game-wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  background-color: $blue;
+  padding: 50px;
+  padding-top: 0;
+  color: $white;
+}
+
+img{
+  width: 60%;
+}
+
+ul{
+  list-style: none;
+  text-align: center;
+}
+
+button{
+  padding: 10px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  background-color: $grey;
+  font-weight: bold;
+  text-transform: uppercase;
+  &:hover{
+    opacity: .8;
+  }
+}
+
+#winner-congr {
+  font-size: 25px;
+  color: $red;
+  display: none;
+}

@@ -1,0 +1,9 @@
+@import './_variables.scss';
+
+#buttons-wrapper{
+  display: flex;
+  justify-content: center;
+  .btn{
+    background-color: $pink;
+  }
+}

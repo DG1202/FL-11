@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Rock, Paper, or Scissors</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="container">
+    <div class="game-wrapper">
+	    <img src="img/rock-paper-scissors.png" alt="">
+	    <div class="game-info">
+	      <h1 class="game-info__title">Let’s play</h1>
+	      <h2 class="game-info__subtitle">Rules</h2>
+	      <ul class="game-info__list">
+	        <li class="game-info__listitem">Scissors beats a paper</li>
+	        <li class="game-info__listitem">Paper beats rock</li>
+	        <li class="game-info__listitem">Rock beats scissors</li>
+	        <li class="game-info__listitem">And we play up to three wins!</li>
+	      </ul>
+	    </div>
+      <div class="score">
+         <div class="score__player">
+           <h3 class="score__title">User</h3>
+           <span id="score__user">0</span>
+         </div>
+         <div class="score__player">
+           <h3 class="score__title">Computer</h3>
+           <span id="score__computer">0</span>
+         </div>
+      </div>
+	    <p id="winner-congr"></p>
+      <div id="buttons-wrapper">
+      </div>
+      <button id="reset">Reset</button>
+      <ul id="game-logs">
+      </ul>
+    </div>
+  </div>
+  <script src="js/app.js"></script>
+</body>
+</html>
