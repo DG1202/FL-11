@@ -21,17 +21,13 @@ function reducer(state = innitialState, action) {
             showUsers: (state.showUsers + 5 > state.data.length) ?
                 state.data.length : state.showUsers + 5
         };
-        brake;
     case 'FILTER':
         const filtredData = innitialState.data.filter((user) =>
             user.name.toLowerCase().search(action.filterValue.toLowerCase()) !== -1);
         return newState(state, filtredData);
-        brake;
     case 'REMOVE':
-        const deleted = innitialState.data.splice(innitialState.data.findIndex((user) => user.id === action.id), 1);
-        console.log(deleted);
+        innitialState.data.splice(innitialState.data.findIndex((user) => user.id === action.id), 1);
         return newState(state, innitialState.data);
-        break;
     default:
         return state;
     }

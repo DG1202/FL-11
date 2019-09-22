@@ -11,12 +11,11 @@ root.appendChild(header.renderHeader());
 const body = document.createElement('div');
 root.appendChild(body);
 
-function main() {
-    const app = new App(store.getState(), body);
+function main(state) {
+    const app = new App(state, body);
     return app.renderApp();
 }
 
-document.addEventListener('DOMContentLoaded', main);
 document.getElementById('root').addEventListener('click', dispatchClickActions);
 document.getElementById('root').addEventListener('keyup', dispatchInputActions);
 
@@ -39,7 +38,6 @@ function dispatchClickActions(e) {
 }
 
 function dispatchInputActions(e) {
-    console.log('work');
     if (e.target.className === 'filter') {
         store.dispatch({
             type: 'FILTER',
@@ -48,7 +46,8 @@ function dispatchInputActions(e) {
     }
 }
 
-store.subscribe(main);
+store.subscribe(() => main(store.getState()));
+main(store.getState());
 // ** Here you can pass store down to your components
 // ** and initialize them, like in example below
 
